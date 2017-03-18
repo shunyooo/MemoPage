@@ -1,0 +1,339 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>HTML5,CSS,DOMとは？</title>
+            <link rel="stylesheet" type="text/css" href="xxx.css">
+        </head>
+        
+        <body>
+            <h1 id = 00 class = "elegantshadow">HTML5,<br>CSS,<br>DOM,<br>とは？</h1>
+            <main id = "body">
+                <!--
+                <p>counter:<span id = "counter">0</span></p>
+                <p><input id = "tanuki" type="text" value = "tanuki"/></p>
+                <p id = "tanukiout"></p>
+                
+                
+                
+                <p id = "cursor"　style="position:fixed; display:none;">
+                <img src="images/note.png" width="200" height="200" alt="めも" style="display:none;"/>
+                <textarea style="position: absolute; top: 70px; left: 20px; width: 150px;height:100px;background-color:transparent;display:none;border:none;"></textarea>
+                </p>
+                
+                <div id = "GUI" style="position:fixed; right:0px; bottom:0px;" >
+                <p id = "gen_note" style="position:absolute; right:10px; bottom:0px;">
+                <img src="images/notes.png" width="200" height="200" alt="めも" style="z-index:10001;"/>
+                <span style="position: absolute; top: 90px; left: 60px; width: 150px;height:100px;background-color:transparent;border:none;z-index:10002;">click here</span>
+                </p>
+                    
+                <p id = "read_note" style="position:absolute; right:20px; bottom:360px; display:none;">
+                <img src="images/reload.png" width="50" height="50" alt="リロード"　/>
+                </p>
+                    
+                <p id = "clear_note" style="position:absolute; right:10px; bottom:240px;display:none;">
+                <img src="images/clear.png" width="70" height="70" alt="けす"/>
+                </p>    
+                    
+                </div>
+!-->
+
+                
+                
+            <ul>
+                <div class="mokuzi"><h2><span class="mark_blue">HTMLとは？</span></h2>
+                    <ul>
+                        <li><a href="#01">HTMLとは</a></li>
+                        <li><a href="#02">DOCYTYPE</a></li>
+                        <li><a href="#03">タグ(tag)</a></li>
+                        <li><a href="#04">要素(element)</a></li>
+                        <li><a href="#05">属性(attribute)</a></li>
+                        <li><a href="#06">基本的な構造</a></li>
+                    </ul>
+                </div>
+                <div class="mokuzi"><h2><span  class="mark_red">CSSとは？</span></h2>
+                    <ul>
+                        <li><a href="#07">CSSとは</a></li>
+                        <li><a href="#08">セレクタ</a></li>
+                        <li><a href="#09">プロパティ</a></li>
+                        <li><a href="#10">id</a></li>
+                        <li><a href="#11">class</a></li>
+                        <li><a href="#12">CSSの適用の方法</a></li>
+                    </ul>
+                </div>
+                <div class="mokuzi"><h2><span class="mark_green">DOMとは？</span></h2>
+                    <ul>
+                        <li><a href="#13">DOMとは</a></li>
+                        <li><a href="#14">addEventListener</a></li>
+                        <li><a href="#15">DOMContentLoaded</a></li>
+                        <li><a href="#16">イベントフェーズ</a></li>
+                        <li><a href="#17">getElementById</a></li>
+                        <br>
+                    </ul>
+                </div>
+
+                <div class="discription">
+                    <div class="HTML">
+                        <h3 id="01">HTMLとは</h3>
+                        Hyper Text Markup Languageの略。Webページを作る上で最も基本的な言語である。<br><u>HTMLタグを用いて、ヘッダやタイトル、パラグラフなどの要素を構造的に記述する。<br></u>要素の中に更に要素や文字列を記述するので、マトリョシカのような構造になる。
+
+
+                        <h3 id="02">DOCYTYPEとは</h3>
+                        &lt;!DOCTYPE>はDTD(Document Type Definition:文書型の定義)を宣言するために<u>先頭に記述する</u>ものである。<br>このソースの場合、&lt;!DOCTYPE html>と記述することで、HTML5で作成していることを明示的に宣言している。
+
+
+
+                        <h3 id="03">タグ(tag)とは</h3>
+                    通常 &lt;b>&lt;要素名>&lt;/要素名>&lt;/b>と表記し、その間に更にタグや文字列を記述する。要素名は小文字でも大文字でも構わない。<br>
+                    この場合<u>&lt;要素名>は開始タグ(start tag)、&lt;/要素名>は終了タグ(end tag)と呼ぶ。</u><br>
+                    aはリンクを、pは段落を、liはリスト、といった意味を持つ要素を、タグを用いてページを構造的に作成することができる。
+                    例えばこのページのタイトルは<div class ="code_space">
+                        <pre><code class="language-pascal">...
+    &lt;html>
+        &lt;head>
+            ...
+            &lt;title>HTML5とは？&lt;/title>
+        &lt;/head>
+    ...
+    </code></pre> </div>
+                        とtitleタグを指定することにより実装されている。
+                        また、<u>終了タグを省略できるもの(&lt;li>:リスト,&lt;dd>:定義説明,など)や、元々終了タグのないもの(&lt;br>:改行,&lt;img>:画像,など)もある。 </u>
+                        
+
+
+                        <h3 id="04">要素(element)とは</h3>
+                        <u>タグで述べた際に用いるheadやbody,aやpそのもののことである。</u>タグを用いて、要素の範囲を定めることでHTMLを構造的に記述することができる。<br>要素と要素は包含関係にある場合が多く、その場合、<u>含んでいる側の要素を<b>親</b>、含まれている側の要素を<b>子</b>と呼ぶ。</u>
+                        <br>※要素とタグの関係は以下のように表せる。
+                        <p><img src="images/element_tag.png" width="400px" height="120px" alt="要素とタグの関係"></p>
+                        <a href="http://www.htmq.com/html5/indexa.shtml">要素/タグ一覧(リファレンス)</a>
+
+                       
+
+                        <h3 id="05">属性(attribute)とは</h3>
+                        要素に情報を付加するもの。様々なものがあり、色や大きさを指定することができる。<br>
+                        例えば、a要素(ハイパーリンクを定義)にはhrefというリンクのURLを付加することができ、
+                        <div class ="code_space">
+                            <pre><code>&lt;a href="index.html">インデックスページ&lt;/a></code></pre>
+                        </div>
+                        と表記すれば、<a href="index.html">インデックスページ</a>というようにhref属性を付加したハイパーリンクが作成される。
+                        このとき、hrefを属性名、"index.html"を属性値と呼ぶ。<br>
+                        <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Attributes">属性一覧(リファレンス)</a>
+                   
+
+                        <h3 id="06">基本的な構造</h3>
+                        HTMLの基本的な構造は以下のようになる。
+                        <p><img src="images/html_str.png" alt="HTMLの基本的な構造"></p>
+                        <b>DOCTYPE宣言</b>を先頭に行い、その下にhtml要素を記述する。<br><u><b>html要素</b>は子にhead要素とbody要素のみ持つことができる。</u><br>
+                        <b>head要素</b>にはタイトル名や文字コードの指定などWebページには直接見えない部分の情報を記述する。
+                        例えば、このページでは
+                        <div class ="code_space">
+                            <pre><code>&lt;head>
+      &lt;meta charset="UTF-8">
+      &lt;title>HTML5とは？&lt;/title>
+    &lt;/head>
+    </code></pre></div>
+                            というように記述されている。<br>
+                            &lt;meta charset="UTF-8">は文字コードをUTF-8に指定している。metaは英語で「-を超えた、-を含んだ、-の後の」などの意味を持ち、デフォルトで設定されているページ情報を後から指定する場合に用いるようである。<br>
+                            &lt;title>HTML5とは？&lt;/title>ではページタイトルを「HTMLとは？」に指定している。ここで指定されたタイトルはタブやウィンドウの枠欄などに表示される。<br>
+                            <b>body要素</b>ではページの本体となる情報、つまりWebページでユーザーが直接目にする情報を記述する。<br><a href="#00" align= "right">TOPへ</a>
+
+                        </div>
+                        
+                        <div class="CSS">
+                            <h3 id="07">CSSとは</h3>
+                            <b>CSS</b>（Cascading Style Sheets）とは、<u>ウェブページのスタイルを指定するための言語。</u>HTMLで作成した構造にCSSを適用させて、色やサイズやレイアウトなどの装飾を施し、見栄えを整えることができる。
+                            
+
+                            <h3 id="08">セレクタとは</h3>
+                            <p><img src="images/css_selectar.png" alt="セレクタ"></p>
+                            上の画像のように<b>「HTMLのどの部分を装飾するか」</b>を指定する部分。この場合、h1タグの内容にスタイルが適用される。<br/>
+                            タグ指定の他にも、<b>クラス指定「.(class名){}」</b>や<b>id指定「#(id番号){}」</b>も行える。<br>
+                            また、<b>「p a{}」</b>というように入れ子を絞って指定することもできる。
+                            
+
+                            <h3 id="09">プロパティとは</h3>
+                            <p><img src="images/css_proparty.png" alt="プロパティ"></p><br>
+                            <b>「どのスタイルを適用するか」</b>を指定する部分。この場合、color(プロパティ)に＃000000(値)が入る。<br/>
+                            プロパティは<u>一つだけではなく複数の指定が行える。</u>
+                           
+
+                            <h3 id="10">idとは</h3>
+                            HTMLでタグにid属性を与えることができる。<br><b>CSSで「#(id番号){}」</b>と記述することで目的のidのみにスタイルを適用することができる。<br/>
+                            <u>一度記述したidは同一ページ内で再び使用することはできない。</u>
+                            
+
+                            <h3 id="11">classとは</h3>
+                            HTMLでタグにclass属性を与えることができる。<br><b>CSSで「.(class名){}」</b>と記述することで目的のclassのみにスタイルを適用することができる。<br/>
+                            <u>idとは違い、記述したclassは同一ページ内で何度も使用することができる。</u>
+                        
+
+                            <h3 id="12">CSSの適用の方法</h3>
+                            大きく分けて
+                            <li>ヘッダーに組み込む</li>
+                            <li>タグのstyle属性に組み込む</li>
+                            <li>外部にCSSファイルを作り読み込む</li>
+                            の3つの方法がある。<br><br>
+                            <b>ヘッダーに組み込む場合</b>
+                            <div class ="code_space">
+                                <pre><code>&lt;html>
+      &lt;head>
+        &lt;style type="text/css">
+        &lt;!--
+        body {color:red; width: 750px;}
+        -->
+        &lt;/style>
+      &lt;/head>
+      &lt;body>
+      &lt;/body>
+    &lt;/html>
+    </code></pre></div>というようにヘッダーに指定する。<br><br>
+
+                                <b>タグのstyle属性に組み込む場合</b>
+                                <div class ="code_space">
+                                <pre><code>&lt;h1 style="color:red;">タグの内容&lt;/h1></code></pre></div>
+                                というようにタグのstyle属性で指定する。<br><br>
+
+
+                                <b>外部にCSSファイルを作り読み込む場合</b>
+                                <div class ="code_space">
+                                    <pre><code>&lt;link rel="stylesheet" type="text/css" href="xxx.css">
+    </code></pre></div>
+                                    というようにlink要素をヘッダーで使用することで指定する。<br>
+                                    この場合、rel="stylesheet"で外部のスタイルシートを読み込むことを示し、typeでMIMEタイプの指定、hrefでファイルへのリンク(この場合は相対URL)の指定を行っている。                         
+
+
+                                </div><a href="#00" align= "right">TOPへ</a>
+                    <div class="DOM">
+                        <h3 id="13">DOMとは</h3>
+                        DOM（Document Object Model）とは、htmlやcssの要素に直接アクセスし、書き換えなどの操作を行える仕組み。「ボタンを押すと&lt;p>タグ内の内容を変更する」などの動的な操作を行うことができる。様々な言語で実装が可能だが、基本的にはJavaScriptで実現する。<br>基本的に「要素の取得」->「取得した要素にイベントを登録」という流れとなる。
+
+                        <h3 id="14">addEventListenerとは</h3>
+                        DOMにおいて、イベントを登録する(イベントが起こった時に関数が動くようにする)のに用いるメソッド。<br>
+                        第一引数に「<b>イベントハンドラ(イベントの種類)</b>」、第二引数に「<b>関数</b>」、第三引数に「<b>イベントの伝播形式</b>」を記述する。
+                        例えば、以下のように記述することができる。
+                        <div class ="code_space">
+                                <pre><code>&lt;p id="hoge">アラートを実行します&lt;/p>
+
+        &lt;script>
+        var elem = document.getElementById("hoge");
+
+        elem.addEventListener("click", function(){
+            alert('アラートを実行してます!');
+        });
+        &lt;/script></code></pre></div>
+                        これを組み込むと以下のようになる。
+                        <div class="general-button">
+                        <div class="button-content">
+                        <p id="hoge">アラートを実行します</p>
+                        </div>
+                        </div>
+                        <br>
+                        この場合、document.getElementById("hoge")によって要素を取得し、その要素に対してaddEventListnerを行っている。"click"は要素がクリックされた時、無名関数function(){}内の処理を実行することを指定している。<br>第三引数は省略してあるが、デフォルト値は「false」でバブリングフェーズで実行する設定となっている。(詳しくは<a href="#16">イベントフェーズ</a>で)<br><br>
+
+                        イベントハンドラには以下のようなものがある。
+                        <table class="table">
+        <tbody>
+        <tr>
+            <th>click</th>
+            <td>要素がクリックされたとき</td>
+        </tr>
+        <tr>
+            <th class="even">dblclick</th>
+            <td class="even">要素がダブルクリックされたとき</td>
+        </tr>
+        <tr>
+            <th>mouseover</th>
+            <td>要素の上にマウスのカーソルが重なったとき</td>
+        </tr>
+        <tr>
+            <th class="even">mouseout</th>
+            <td class="even">要素の上にマウスのカーソルが離れたとき</td>
+        </tr>
+        <tr>
+            <th>load</th>
+            <td>ページの読み込みが完了したとき</td>
+        </tr>
+    </tbody></table>
+
+                        
+                        
+                        
+    
+    <h3 id="15">DOMContentLoadedとは</h3>
+                        <u>HTML読み込みの完了を知らせるイベント。</u>以下のように記述する。
+                        <div class ="code_space">
+                        <pre><code>document.addEventListener("DOMContentLoaded", function(){
+//HTML読み込み完了時に行う処理
+}, false);</code></pre></div>
+                        
+                        WebブラウザはHTML解析中にscript要素を発見すると、<u>HTML解析を中断し、JavaScriptを即座に実行する</u>。そのため、<u>そのscript要素以降にあるHTMLは、まだ読み込まれていないため、そのscriptからアクセスすることができない</u>。<br>
+                        これを回避するために「<b>onload</b>」イベントが発生した時にスクリプトを実行するという方法がある。
+                        しかし、onloadイベントは画像やスタイルシート、サブフレームデータも含めた読み込みの完了を知らせるので、<u>画像が大量にある場合などページの表示に時間がかかることがある</u>。<br>
+                        そのため、一般的に「<b>script要素をbody要素の最後に置く方法</b>」や「<b>DOMContentLoadedイベントを用いてHTML読み込み完了のタイミングで実行させる方法</b>」といった方法がとられる。このような時にDOMContentLordedを用いることができる。            
+    
+　　<h3 id="16">イベントフェーズ</h3>
+                        DOMはその入れ子構造から、親子に同種のイベントが設定されていた場合、思わぬ挙動をとってしまうことがある。これを避けるために、制御する必要がある。<br>
+                        <br>
+                        例えば、以下のように入れ子になった要素があったとする。
+                        <div class ="code_space">
+                        <pre><code>&lt;div id="outer">outer
+  &lt;div id="inner">inner
+  &lt;/div>
+&lt;/div></code></pre></div>
+                        
+                        この時イベントが発生した時、そのイベントは「<b>キャプチャフェーズ</b>」「<b>ターゲットフェーズ</b>」「<b>バブリングフェーズ</b>」の3つのフェーズを経て伝播する。
+                        例えば、id="inner"の要素でイベントが発生した時、以下のように伝播していく。
+                        <p><img class = "phase" src="images/event.jpg" alt="イベントフェーズ"></p>
+                        <br><br>
+                        これは<a href="#14">addEventListener</a>の第三引数(true,false)で用いられ、ここでは「<b>キャプチャフェーズ</b>」、「<b>バブリングフェーズ</b>」のどちらのフェーズで実行するかを指定する。
+                        
+                        <div class ="code_space">
+                        <pre><code>&lt;script>
+document.getElementById('outer').addEventListener('click',function(){alert('outer');},true);
+document.getElementById('inner').addEventListener('click',function(){alert('inner');});
+&lt;script></code></pre></div>
+                        と、outerの第三引数をtrueにし、innerをクリックした場合、<u>innerで発生したイベントのキャプチャフェーズでouterが実行される</u>。よって、outer->innerの順にアラートが表示されるだろう。<br>
+                        <p><img class = "phase" src="images/capture.jpg" alt="キャプチャ"></p>
+                        サンプル
+                        <div class = "sample_space">
+                        <div id="outer">
+                            outer<br>
+                            <div id="inner">
+                                inner
+                            </div>
+                        </div>
+                        </div>
+                        <br>
+                        逆にouterの第三引数をfalse(デフォルト値)にした場合は、<u>innerで発生したイベントのバブリングフェーズでouterが実行される</u>。よって、inner->outerの順にアラートが表示されるだろう。<br>
+                        <p><img class = "phase" src="images/bable.jpg" alt="バブリング"></p>
+                        サンプル
+                        <div class = "sample_space">
+                        <div id="outer2">
+                            outer<br>
+                            <div id="inner2">
+                                inner
+                            </div>
+                        </div>
+                        </div>
+            
+<h3 id="16">getElementByIdとは</h3>
+                        要素をidによって取得するメソッド。
+                         <div class ="code_space">
+                        <pre><code>element = document.getElementById(id);</code></pre></div>
+                        というように記述することで、<u>ドキュメント内で引数のid属性値を持つ要素がelementに代入される。</u><br>
+                        この取得した要素に対し、イベントを登録するなどの操作を行うことができる。<br>
+                        他にも要素のゲッターは以下のようなものがある。
+                        <div class ="code_space"><pre><code>elements =　document.getElementsByClassName(class_name);//クラス名で取得
+elements = ducument.getElementsByName(name);//name値で取得</code></pre></div>
+                        これらはgetElement<span color="#ff0000"><b>s</b></span>とあるように、該当するものをリストで返してくれる。
+                </div>
+                </div>
+                
+                <h3 id="17">Memo機能について</h3>
+                <object data="images/MemoPage.pdf" type="application/pdf" width="100%" height="500px"></object>
+            </ul>
+        <hr/><a href="#00" align= "right">TOPへ</a>
+</main>
+        <script type="text/javascript" src="event.js"></script>
+    </body>
+</html>
