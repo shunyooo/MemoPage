@@ -98,6 +98,7 @@ let pageX,pageY;
 let display_note_list = [];
 let body = document.getElementById('body');
 let isAllowUpdate = true;
+let SERVER_URL = "http://syunyooo.webcrow.jp/MemoPage/"//通信先の基幹URL
 
 document.addEventListener("DOMContentLoaded", function(e){
     body.appendChild(genGUI());
@@ -124,7 +125,7 @@ console.log("base2:("+base_point_2.left+","+base_point_2.top+")");
 //document.getElementById('clear_note').addEventListener('click',clear_note);
 
 function clear_note(e){//Webサーバにあるnote.txtの中身を初期化
-    const url = "http://www.isc.meiji.ac.jp/~ee47125/Final/note.cgi?mode=clear";
+    const url = SERVER_URL+"note.cgi?mode=clear";
         console.log("実行->"+url)
         function ajaxGetPromise(url) {
             return new Promise((resolve, reject) => {
@@ -166,7 +167,7 @@ window.setInterval(function(e){
 
 
 function read_note(e){//webサーバにある共有noteからの読み込み。
-    const url = "http://www.isc.meiji.ac.jp/~ee47125/Final/note.cgi";
+    const url = SERVER_URL+"note.cgi";
         console.log("読み込み実行->"+url);
         function ajaxGetPromise(url) {
             return new Promise((resolve, reject) => {
@@ -423,7 +424,7 @@ document.addEventListener('dblclick' ,function(e){
 });
 
 function save_note(note){
-        const url = "http://www.isc.meiji.ac.jp/~ee47125/Final/note.cgi";
+        const url = SERVER_URL+"note.cgi";
         const note_input = note.children[1];
         console.log("格納実行->"+url);
         function ajaxGetPromise(url) {
@@ -583,7 +584,7 @@ function get_style(obj,styletype){
 
 //webサーバ上から引数のノートを消す。
 function delete_note(note){
-    const url = "http://www.isc.meiji.ac.jp/~ee47125/Final/note.cgi?mode=delete&id="+note.id;
+    const url = SERVER_URL+"note.cgi?mode=delete&id="+note.id;
         console.log("削除実行->"+url)
         function ajaxGetPromise(url) {
             return new Promise((resolve, reject) => {
