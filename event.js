@@ -177,7 +177,19 @@ function read_note(e){//webサーバにある共有noteからの読み込み。
                     if(xhr.readyState === 4){//非同期通信の完了
                         if((200 <= xhr.status && xhr.status < 300)){//成功
                             resolve(xhr.responseText);
+                            
+                            let pop = document.getElementById("network_pop");
+                            if (pop != null){//ポップ削除
+                                pop.parentNode.removeChild(pop);
+                            }
+                            
                         }else{//失敗
+                            
+                            let pop = document.getElementById("network_pop");
+                            if (pop == null){//ポップ表示
+                                make_network_pop();
+                            }
+                            
                             reject("リクエスト失敗"+String(xhr.status));
                         }
                     }
@@ -191,10 +203,57 @@ function read_note(e){//webサーバにある共有noteからの読み込み。
             console.log(result);
             make_note(JSON.parse(result));
         }
-        ).catch(//失敗
-        (result)=>{console.log(result);}
+        ).catch(//失敗(メモ情報が不正、通信が不安定？)
+        (result)=>{console.log(result);
+                   console.log(result.name);
+                   //console.log(result.prototype.number);
+                   // 「OK」時の処理開始 ＋ 確認ダイアログの表示
+                    if(result.name == "SyntaxError"){
+                        if(window.confirm('メモ情報が不正の可能性があります。初期化しますか？')){
+                            clear_note();
+                        }
+                        // 「キャンセル」時の処理開始
+                        else{   
+                            
+                        }
+                    }
+                   
+                    
+                }
         );
 }
+
+function make_network_pop(){//ネットワークが通じていないエラーポップ
+    let pop = document.createElement("p");
+    pop.id = "network_pop";
+    pop.style.display="block";
+    pop.style.position = "fixed";
+    pop.style.backgroundColor = "rgba(149,236,255,0.9)";
+    
+    //pop.style.width = "300px";
+    //pop.style.height = "40px";
+    
+    pop.style.right = "35%";
+    pop.style.bottom = "10px";
+    
+    pop.style.textAlign = "center";
+    pop.style.paddingLeft = "15px"
+    pop.style.paddingRight = "15px"
+    pop.style.paddingTop = "10px"
+    pop.style.paddingBottom = "10px"
+    
+    pop.innerHTML = "ネットワーク接続が不安定です";
+    
+    //let title_label = document.createElement("p");
+    //title_label.style.position= "absolute";
+    //title_label.style.top = "20px";
+    //title_label.style.left = "30px";
+    //title_label.innerHTML = "ネットワーク接続が不安定です";
+    //pop.appendChild(title_label);
+
+    body.appendChild(pop);
+}
+
 
 
 
@@ -243,7 +302,7 @@ function make_note(notes){//read_notesで読み込んだメモを生成。
         }
         
         let close_btm = note.children[3];
-        close_btm.onclick = function(e){
+        close_btm.onclick = function(e){//削除機能登録
             console.log(display_note_list);
             //配列からも削除
             for(let i=0;i<display_note_list.length;i++){
@@ -324,6 +383,8 @@ function gen_note(position){
     
     return nowNote;
 }
+
+
 
 function random_hash(){//乱数生成-->idとする。
     // 生成する文字列の長さ
